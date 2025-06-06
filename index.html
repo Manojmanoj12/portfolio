@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manoj C S | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    :root {
+      --primary-color: #4f46e5;
+      --secondary-color: #1f2937;
+      --text-color: #333;
+      --light-bg: #f7f7f7;
+      --card-bg: #ffffff;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 1rem 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--secondary-color), #2d3748);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(79, 70, 229, 0.2), transparent);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 6px solid var(--primary-color);
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 40px rgba(79, 70, 229, 0.18), 0 2px 8px rgba(0, 0, 0, 0.10);
+      object-fit: cover;
+      transition: transform 0.3s cubic-bezier(.4, 2, .6, 1), box-shadow 0.3s;
+    }
+
+    .hero img:hover {
+      transform: scale(1.06) rotate(-2deg);
+      box-shadow: 0 16px 60px rgba(79, 70, 229, 0.28), 0 4px 16px rgba(0, 0, 0, 0.13);
+    }
+
+    @media (max-width: 600px) {
+      .hero img {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 1.5rem;
+        border-width: 4px;
+      }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #e2e8f0;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .cta-button {
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .primary-btn {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .skill-card i {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    /* Projects Section */
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-content h3 {
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project-year {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+    }
+
+    .project-description {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .project-features {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .project-features li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    .project-features li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .project-link:hover {
+      color: #6366f1;
+      transform: translateX(5px);
+    }
+
+    /* Contact Section */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary-color);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .project-card {
+        padding: 1.5rem;
+      }
+
+      .project-tech {
+        gap: 0.3rem;
+      }
+
+      .tech-tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+      }
+    }
+
+    /* Certificate Card Styles */
+    .certificate-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificate-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .certificate-card i {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .certificate-card h3 {
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .certificate-card p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .view-certificate {
+      color: var(--primary-color);
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+    }
+
+    .certificate-card:hover .view-certificate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90vh;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      transform: scale(0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-content h3 {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--secondary-color);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close-modal:hover {
+      color: var(--primary-color);
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        padding: 1rem;
+      }
+
+      .modal-content h3 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* About Section Styles */
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .about-content {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .about-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .about-text h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .about-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .about-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: rgba(79, 70, 229, 0.05);
+      border-radius: 15px;
+      transition: var(--transition);
+    }
+
+    .detail-item:hover {
+      background: rgba(79, 70, 229, 0.1);
+      transform: translateX(5px);
+    }
+
+    .detail-item i {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .detail-item h4 {
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .detail-item p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .about-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .about-cta .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .about-cta .cta-button i {
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        padding: 2rem;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+      }
+
+      .about-description {
+        font-size: 1rem;
+      }
+
+      .detail-item {
+        padding: 1rem;
+      }
+    }
+
+    .contact-details {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      background: #f3f4f6;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-item i {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+
+    .call-link i {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .call-link:hover i {
+      color: #fff;
+      background: var(--primary-color);
+      border-radius: 50%;
+      padding: 0.3rem;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress"></div>
+  <div class="modal" id="certificateModal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+      <img src="" alt="Certificate Preview" id="modalImage">
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-content">
+      <div class="logo">Manoj C S</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <img src="profile-new.jpg" alt="Manoj C S">
+      <h1>HELLO, I'm</h1>
+      <h1>MANOJ C S</h1>
+      <p>FULL STACK DEVELOPER</p>
+      <div class="cta-buttons">
+        <a href="https://drive.google.com/file/d/1lTZoSUqIsO-NbGVS8dGkk1oZeUYSgsG-/view?usp=sharing"
+          class="cta-button primary-btn" target="_blank">DOWNLOAD CV</a>
+        <a href="#contact" class="cta-button secondary-btn">CONTACT INFO</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-title">
+      <h2>ABOUT ME</h2>
+      <p>Get to know more about me</p>
+    </div>
+    <div class="about-container">
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Hello! I'm Manoj 👋</h3>
+          <p class="about-description">
+            A passionate Full Stack Developer with a strong foundation in Java, Python, and web technologies.
+            I love creating efficient and user-friendly applications that solve real-world problems.
+          </p>
+          <div class="about-details">
+            <div class="detail-item">
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <h4>Education</h4>
+                <p>B.Tech IT - MKCE (2022-2026)</p>
+                <p>CGPA: 7.265</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-code"></i>
+              <div>
+                <h4>Experience</h4>
+                <p>Full Stack Development</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-laptop-code"></i>
+              <div>
+                <h4>Skills</h4>
+                <p>Java, Python, Web Development</p>
+                <p>Database Management</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-cta">
+            <a href="https://github.com/Manojmanoj12/Azure-HandsOn" target="_blank" class="cta-button primary-btn">
+              <i class="fab fa-github"></i> View My Work
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="section-title">
+      <h2>MY SKILLS</h2>
+      <p>What I'm good at</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <i class="fab fa-java"></i>
+        <h3>Java</h3>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-python"></i>
+        <h3>Python</h3>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-code"></i>
+        <h3>C Programming</h3>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-database"></i>
+        <h3>MySQL</h3>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-html5"></i>
+        <h3>HTML/CSS</h3>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-js"></i>
+        <h3>JavaScript</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section-title">
+      <h2>MY PROJECTS</h2>
+      <p>Some of my recent work</p>
+    </div>
+    <div class="cards-grid">
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Attendance Notification System</h3>
+          <div class="project-details">
+            <span class="project-year">2024-25</span>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+            <p class="project-description">
+              A comprehensive attendance management system that automates attendance tracking and sends notifications to
+              parents. Features include:
+            </p>
+            <ul class="project-features">
+              <li>Automated attendance tracking</li>
+              <li>Real-time parent notifications</li>
+              <li>Attendance analytics dashboard</li>
+              <li>Customizable notification settings</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Agri Monitoring System</h3>
+          <div class="project-details">
+            <span class="project-year">2023-24</span>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Arduino</span>
+              <span class="tech-tag">Sensors</span>
+            </div>
+            <p class="project-description">
+              An IoT-based agricultural monitoring system that helps farmers monitor and control various environmental
+              factors. Key features include:
+            </p>
+            <ul class="project-features">
+              <li>Real-time soil moisture monitoring</li>
+              <li>Temperature and humidity tracking</li>
+              <li>Automated irrigation control</li>
+              <li>Mobile app integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Java Practice Repository</h3>
+          <div class="project-details">
+            <span class="project-year">Ongoing</span>
+            <div class="project-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Data Structures</span>
+              <span class="tech-tag">Algorithms</span>
+            </div>
+            <p class="project-description">
+              A collection of Java programs and solutions covering various programming concepts and problem-solving
+              techniques.
+            </p>
+            <ul class="project-features">
+              <li>Data structure implementations</li>
+              <li>Algorithm solutions</li>
+              <li>Practice problems</li>
+              <li>Code documentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates" class="section">
+    <div class="section-title">
+      <h2>CERTIFICATES</h2>
+      <p>My achievements and certifications</p>
+    </div>
+    <div class="cards-grid">
+      <div class="certificate-card"
+        onclick="window.open('https://drive.google.com/file/d/1X3Xhi637pUGW-_n9vVzmV5rA8ljkcDaP/view?usp=sharing', '_blank')">
+        <i class="fas fa-certificate"></i>
+        <h3>NPTEL Java</h3>
+        <p>Java Programming Certification</p>
+        <div class="view-certificate">
+          <i class="fas fa-eye"></i> View Certificate
+        </div>
+      </div>
+      <div class="certificate-card"
+        onclick="window.open('https://drive.google.com/file/d/1ZjB_4kZ4qv-zg7MhZzUdTbhSpBr-oea5/view?usp=sharing', '_blank')">
+        <i class="fab fa-microsoft"></i>
+        <h3>Azure Fundamentals</h3>
+        <p>Microsoft Azure Cloud Certification</p>
+        <div class="view-certificate">
+          <i class="fas fa-eye"></i> View Certificate
+        </div>
+      </div>
+      <div class="certificate-card"
+        onclick="window.open('https://drive.google.com/file/d/16inArVIQ2Tnyv2LCyDvjnyggY9UIJtgd/view?usp=drive_link', '_blank')">
+        <i class="fas fa-database"></i>
+        <h3>PHP & MySQL</h3>
+        <p>Web Development Certification</p>
+        <div class="view-certificate">
+          <i class="fas fa-eye"></i> View Certificate
+        </div>
+      </div>
+      <div class="certificate-card"
+        onclick="window.open('https://drive.google.com/file/d/133-bMBczfZ9R8HaKujC-p7cWSuwNbVlT/view?usp=drive_link', '_blank')">
+        <i class="fas fa-microchip"></i>
+        <h3>IoT</h3>
+        <p>Internet of Things Certification</p>
+        <div class="view-certificate">
+          <i class="fas fa-eye"></i> View Certificate
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-title">
+      <h2>CONTACT ME</h2>
+      <p>Get in touch</p>
+    </div>
+    <div class="contact-form">
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="cta-button primary-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/manojcs24" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Manojmanoj12" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.hackerrank.com/profile/manojmanoj72073" target="_blank"><i class="fab fa-hackerrank"></i></a>
+      <a href="tel:9363337084" class="call-link" title="Call Manoj"><i class="fas fa-phone"></i></a>
+    </div>
+    <p>&copy; 2025 Manoj C S | Built with ❤️ in HTML & CSS</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('certificateModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close-modal');
+
+    function openModal(imageSrc) {
+      modalImg.src = imageSrc;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalFunc();
+    });
+
+    // Scroll progress indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.querySelector('.scroll-progress').style.width = scrolled + '%';
+    });
+
+    // Add fade-up animation to elements
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.card, .project-card, .skill-category').forEach(el => {
+      el.classList.add('fade-up');
+      observer.observe(el);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Navbar background change on scroll
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+      } else {
+        navbar.style.background = 'transparent';
+      }
+    });
+
+    // Certificate Modal Functionality
+    function openCertificateModal(imageSrc, title) {
+      const modal = document.getElementById('certificateModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+
+      modalImg.src = imageSrc;
+      modalTitle.textContent = title;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCertificateModal() {
+      const modal = document.getElementById('certificateModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('certificateModal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        closeCertificateModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeCertificateModal();
+      }
+    });
+  </script>
+</body>
+
+</html>
